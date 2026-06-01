@@ -4,7 +4,7 @@
 
 ---
 
-We propose **DrIG**, a novel **Dual-identifier Generative framework for Universal Multimodal Retrieval**.
+We propose **DrIG**, a novel **Generative Universal Multimodal Retrieval with Dual-role Identifiers**.
 
 
 ## Overview
