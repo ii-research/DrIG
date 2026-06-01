@@ -16,9 +16,9 @@ We propose **DrIG**, a novel **Dual-identifier Generative framework for Universa
 Clone the repository and create the Conda environment:
 
 ```bash
-git clone <YOUR_DiG4UMR_REPO_URL>
+git clone <YOUR_REPO_URL>
 cd DiG
-conda env create -f dig_env.yml
+conda env create -f drig_env.yml
 ```
 
 ## M-BEIR
@@ -141,7 +141,7 @@ bash run_eval.sh
 
 ## Model Checkpoints
 
-We provide model checkpoints for DiG4UMR in the 🤗 [Hugging Face](https://huggingface.co/):
+We provide model checkpoints for DrIG in the 🤗 [Hugging Face](https://huggingface.co/):
 
 ### How to Download
 ```bash
