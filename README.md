@@ -1,10 +1,10 @@
-# DiG4UMR
+# DrIG
 
 ### Introduction
 
 ---
 
-We propose **DiG4UMR**, a novel **Dual-identifier Generative framework for Universal Multimodal Retrieval**.
+We propose **DrIG**, a novel **Dual-identifier Generative framework for Universal Multimodal Retrieval**.
 
 
 ## Overview
@@ -43,7 +43,7 @@ git lfs install
 git clone <M-BEIR_DATASET_REPO>
 ```
 
-The dataset will be used for both training and evaluation phases of **DiG4UMR**.
+The dataset will be used for both training and evaluation phases of **DrIG**.
 
 ---
 
