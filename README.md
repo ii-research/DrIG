@@ -49,7 +49,7 @@ The dataset will be used for both training and evaluation phases of **DrIG**.
 
 ## Usage
 
----
+
 
 ### Multimodal Encoder Feature Extraction (Stage 0)
 
