@@ -8,7 +8,7 @@
 [![Python 3.10](https://img.shields.io/badge/Python-3.10-blue.svg)](drig_env.yml)
 [![PyTorch 2.5.1](https://img.shields.io/badge/PyTorch-2.5.1-ee4c2c.svg)](drig_env.yml)
 [![Dataset: M-BEIR](https://img.shields.io/badge/Dataset-M--BEIR-orange.svg)](https://huggingface.co/datasets/TIGER-Lab/M-BEIR)
-[![CLIP-SF](https://img.shields.io/badge/Checkpoint-CLIP--SF-yellow.svg)](https://huggingface.co/TIGER-Lab/UniIR/resolve/main/checkpoint/CLIP_SF/clip_sf_large.pth)
+[![LamRA-Ret](https://img.shields.io/badge/Encoder-LamRA--Ret-yellow.svg)](https://huggingface.co/code-kunkun/LamRA-Ret)
 ![DrIG Checkpoints](https://img.shields.io/badge/DrIG_Checkpoints-uploading-lightgrey.svg)
 
 </div>
@@ -20,7 +20,7 @@ DrIG is a generative universal multimodal retrieval framework that learns **dual
 DrIG follows a three-stage pipeline:
 
 1. **Stage 0: Multimodal feature extraction**
-   Extract dense multimodal features using pretrained encoders such as LAMRA and CLIP-SF.
+   Extract dense multimodal features using LamRA-Ret.
 
 2. **Stage 1: Residual quantization**
    Train a residual quantizer that maps multimodal candidates into discrete identifiers.
@@ -77,20 +77,12 @@ bash preprocessing/coco_flickr/run_flickr_mscoco_task0_pipeline.sh
 
 ## Model Checkpoints
 
-### CLIP-SF
+### LamRA-Ret
 
-We use UniIR's CLIP-SF checkpoint for encoder-side feature extraction.
-
-```bash
-mkdir -p checkpoint/CLIP_SF
-wget https://huggingface.co/TIGER-Lab/UniIR/resolve/main/checkpoint/CLIP_SF/clip_sf_large.pth \
-  -O checkpoint/CLIP_SF/clip_sf_large.pth
-```
-
-Checkpoint page:
+We use LamRA-Ret for encoder-side multimodal feature extraction.
 
 ```text
-https://huggingface.co/TIGER-Lab/UniIR/blob/main/checkpoint/CLIP_SF/clip_sf_large.pth
+https://huggingface.co/code-kunkun/LamRA-Ret
 ```
 
 ### DrIG Checkpoints
@@ -129,19 +121,6 @@ Outputs are saved under paths such as:
 
 ```text
 embed/lamra/cand
-```
-
-#### CLIP-SF features for candidate pools
-
-```bash
-cd src/feature_extraction/CLIP_SF
-bash run_feature_extraction_cand.sh
-```
-
-Outputs are saved under paths such as:
-
-```text
-embed/CLIP_SF/cand
 ```
 
 ### Stage 1: Residual Quantization
@@ -225,7 +204,6 @@ DrIG/
     ├── eval/
     │   └── configs/
     ├── feature_extraction/
-    │   ├── CLIP_SF/
     │   └── LAMRA/
     └── models/
         ├── generative_retriever/
