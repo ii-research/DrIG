@@ -2,14 +2,14 @@
 
 ### Introduction
 
----
+
 
 We propose **DrIG**, a novel **Generative Universal Multimodal Retrieval with Dual-role Identifiers**.
 
 
 ## Overview
 
----
+
 
 ## Installation
 
@@ -23,7 +23,7 @@ conda env create -f drig_env.yml
 
 ## M-BEIR
 
----
+
 
 We utilize **M-BEIR** (Multimodal BEnchmark for Instructed Retrieval) for training and evaluating our universal multimodal retrieval models. This large-scale benchmark enables comprehensive assessment of model performance across various retrieval tasks.
 
@@ -94,7 +94,7 @@ cd feature_extraction/CLIP_SF
 bash run_feature_extraction_cand.sh
 ```
 
----
+
 
 ### Residual Quantization (Stage 1)
 
@@ -104,7 +104,7 @@ vim configs_scripts/train_rq.yaml  # Edit config like data path, batch size, etc
 bash configs_scripts/run_train.sh
 ```
 
----
+
 
 ### Generator Training (Stage 2)
 
