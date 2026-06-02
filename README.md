@@ -9,7 +9,7 @@
 [![PyTorch 2.5.1](https://img.shields.io/badge/PyTorch-2.5.1-ee4c2c.svg)](drig_env.yml)
 [![Dataset: M-BEIR](https://img.shields.io/badge/Dataset-M--BEIR-orange.svg)](https://huggingface.co/datasets/TIGER-Lab/M-BEIR)
 [![LamRA-Ret](https://img.shields.io/badge/Encoder-LamRA--Ret-yellow.svg)](https://huggingface.co/code-kunkun/LamRA-Ret)
-![DrIG Checkpoints](https://img.shields.io/badge/DrIG_Checkpoints-uploading-lightgrey.svg)
+[![DrIG Checkpoints](https://img.shields.io/badge/Checkpoints-Hugging_Face-yellow.svg)](https://huggingface.co/KaiPengLi/DrIG/tree/main/checkpoints)
 
 </div>
 
@@ -20,13 +20,13 @@ DrIG is a generative universal multimodal retrieval framework that learns **dual
 DrIG follows a three-stage pipeline:
 
 1. **Stage 0: Multimodal feature extraction**
-   Extract dense multimodal features using LamRA-Ret.
+   Encode queries and candidates into a shared embedding space using the external LamRA-Ret encoder.
 
-2. **Stage 1: Residual quantization**
-   Train a residual quantizer that maps multimodal candidates into discrete identifiers.
+2. **Stage 1: Dual-role identifier construction**
+   Convert candidate embeddings into modality-aware residual-quantized identifiers.
 
 3. **Stage 2: Generative retriever training**
-   Train a sequence-to-sequence generator to produce retrieval identifiers from multimodal queries.
+   Train the set-based guidance module and T5 decoder, then retrieve candidates with Trie-constrained beam search and optional dense reranking.
 
 The repository contains code for M-BEIR experiments, MSCOCO/Flickr30k text-to-image retrieval, residual quantization, generator training, and evaluation.
 
@@ -87,11 +87,37 @@ https://huggingface.co/code-kunkun/LamRA-Ret
 
 ### DrIG Checkpoints
 
-DrIG checkpoints are being uploaded. After release, this section will include:
+We provide DrIG checkpoints on Hugging Face:
 
-- Residual Quantization checkpoint
-- Generator checkpoint
-- Full download commands
+```text
+https://huggingface.co/KaiPengLi/DrIG/tree/main/checkpoints
+```
+
+Download the residual quantization checkpoint and the available generative retriever checkpoints:
+
+```bash
+mkdir -p checkpoints/DrIG
+
+wget https://huggingface.co/KaiPengLi/DrIG/resolve/main/checkpoints/rq_lamra.pt \
+  -O checkpoints/DrIG/rq_lamra.pt
+
+wget https://huggingface.co/KaiPengLi/DrIG/resolve/main/checkpoints/DrIG_t5small.pt \
+  -O checkpoints/DrIG/DrIG_t5small.pt
+
+wget https://huggingface.co/KaiPengLi/DrIG/resolve/main/checkpoints/DrIG_t5base.pt \
+  -O checkpoints/DrIG/DrIG_t5base.pt
+
+wget https://huggingface.co/KaiPengLi/DrIG/resolve/main/checkpoints/DrIG_t5large.pt \
+  -O checkpoints/DrIG/DrIG_t5large.pt
+```
+
+Checkpoint links:
+
+- **Feature encoder** (external): [LamRA-Ret](https://huggingface.co/code-kunkun/LamRA-Ret)
+- **Residual quantization checkpoint**: [`rq_lamra.pt`](https://huggingface.co/KaiPengLi/DrIG/blob/main/checkpoints/rq_lamra.pt)
+- **Generative retriever checkpoints**: [`DrIG_t5small.pt`](https://huggingface.co/KaiPengLi/DrIG/blob/main/checkpoints/DrIG_t5small.pt), [`DrIG_t5base.pt`](https://huggingface.co/KaiPengLi/DrIG/blob/main/checkpoints/DrIG_t5base.pt), [`DrIG_t5large.pt`](https://huggingface.co/KaiPengLi/DrIG/blob/main/checkpoints/DrIG_t5large.pt)
+
+For full inference, use LamRA-Ret, `rq_lamra.pt`, and one generative retriever checkpoint.
 
 ## Usage
 
@@ -140,7 +166,7 @@ cd src/models/residual_quantization
 bash configs_scripts/run_train_flickr.sh
 ```
 
-### Stage 2: Generator Training
+### Stage 2: Generative Retriever Training
 
 Edit the generator config before training.
 
@@ -214,9 +240,7 @@ DrIG/
 
 ## Performance
 
-Results will be released with the paper and checkpoints.
-
-The results in parentheses denote scores from reimplemented checkpoints, as the originals were lost during server migration. Slight variations may occur due to retraining randomness.
+Detailed experimental results are reported in the paper, including the main M-BEIR benchmark results and additional text-to-image retrieval results on Flickr30k and MSCOCO.
 
 ## Notes
 
