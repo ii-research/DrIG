@@ -29,6 +29,12 @@ DrIG follows a three-stage pipeline:
 
 The repository contains code for M-BEIR experiments, MSCOCO/Flickr30k text-to-image retrieval, residual quantization, generator training, and evaluation.
 
+<p align="center">
+  <img src="assets/framework.png" alt="Overview of the DrIG framework" width="95%">
+</p>
+
+<p align="center"><em>Figure 1: DrIG encodes multimodal queries and candidates, constructs dual-role identifiers, trains a generative retriever, and retrieves with dual-guided constrained decoding plus optional dense reranking.</em></p>
+
 ## ⚙️ Installation
 
 Clone this repository and create the Conda environment:
@@ -239,11 +245,43 @@ DrIG/
 
 ## 📈 Performance
 
-Detailed experimental results are reported in the paper, including the main M-BEIR benchmark results and additional text-to-image retrieval results on Flickr30k and MSCOCO.
+Detailed experimental results are reported in the paper. The tables below summarize the main README-level takeaways.
+
+### M-BEIR Average Retrieval Performance
+
+| Setting | CLIP-SF | BLIP-FF | LamRA-ret | LamRA | GENIUS | DrIG | GENIUS-C | DrIG-C | DrIG-LT |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Local-pool average | 51.3 | 47.9 | 58.1 | **63.7** | 29.5 | 38.0 | 37.6 | 48.7 | 50.4 |
+| Global-pool average | 48.6 | 45.7 | 56.3 | **61.4** | 28.6 | 36.4 | 37.8 | 47.1 | 48.9 |
+
+DrIG improves over the generative baseline GENIUS in both local-pool and global-pool retrieval. With LamRA-based reranking, DrIG-LT provides a stronger effectiveness-efficiency operating point.
+
+### Text-to-Image Retrieval
+
+| Dataset | Method | Training Data | R@1 | R@5 | R@10 |
+| --- | --- | --- | ---: | ---: | ---: |
+| Flickr30K | DrIG | M-BEIR | 59.0† | 83.1† | 88.2† |
+| Flickr30K | DrIG-LT | M-BEIR | 75.8† | 90.0† | 91.6† |
+| Flickr30K | DrIG | Flickr30K | 65.8 | 88.4 | 92.8 |
+| Flickr30K | DrIG-LT | Flickr30K | **76.9** | **92.5** | **94.8** |
+| MSCOCO | DrIG | M-BEIR | 41.8 | 70.2 | 79.4 |
+| MSCOCO | DrIG-LT | M-BEIR | 56.1 | 79.6 | 86.0 |
+| MSCOCO | DrIG | MSCOCO | 43.4 | 71.3 | 80.5 |
+| MSCOCO | DrIG-LT | MSCOCO | **56.3** | **80.1** | **86.7** |
+
+† denotes zero-shot evaluation without task-specific fine-tuning.
+
+<p align="center">
+  <img src="assets/effectiveness_efficiency.png" alt="Effectiveness and efficiency comparison" width="85%">
+</p>
+
+<p align="center"><em>Figure 2: Effectiveness-efficiency comparison across representative retrieval methods.</em></p>
 
 ## 📝 Notes
 
 Some shell scripts contain machine-specific absolute paths. Before running experiments, update paths such as dataset roots, checkpoint roots, output directories, and CUDA device settings according to your local environment.
+
+Figure assets used in this README should be exported from the paper source and placed under `assets/`. See [assets/README.md](assets/README.md) for the expected filenames.
 
 ## 📄 License
 
