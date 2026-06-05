@@ -12,7 +12,20 @@
 
 </div>
 
-DrIG is a generative universal multimodal retrieval framework that learns **dual-role identifiers** for unified retrieval across heterogeneous multimodal tasks.
+## Introduction
+
+We propose **DrIG**, a novel **G**enerative framework for universal multimodal retrieval featuring **D**ual-**r**ole **I**dentifiers, which supports diverse retrieval tasks across multiple modalities and domains.
+
+
+### ✨ Key Advantages
+- **Dual-role identifiers**  
+Assign each candidate a single residual-quantized identifier and reuse it in two complementary roles: a sequential role for autoregressive generation and a set-based role for prefix-independent relevance estimation.
+
+- **Dual-guided constrained decoding**  
+Introduce dual-guided constrained decoding that combines prefix-valid constrained beam search with an order-invariant global relevance prior to mitigate the local-optimum problem of left-to-right identifier generation.
+
+- **Hybrid reranking and practical analysis**  
+Integrate dense top-k reranking and provide ablations and diagnostic analyses on codebook design, beam size, prior weight, reranking depth, decoder backbone, and key training objectives.
 
 ## 🔎 Overview
 
@@ -33,7 +46,7 @@ The repository contains code for M-BEIR experiments, MSCOCO/Flickr30k text-to-im
   <img src="assets/framework.png" alt="Overview of the DrIG framework" width="95%">
 </p>
 
-<p align="center"><em>Figure 1: DrIG encodes multimodal queries and candidates, constructs dual-role identifiers, trains a generative retriever, and retrieves with dual-guided constrained decoding plus optional dense reranking.</em></p>
+<p align="center"><em>Figure 1: An overview of the proposed DrIG framework</em></p>
 
 ## ⚙️ Installation
 
@@ -183,11 +196,11 @@ cd src
 bash models/generative_retriever/configs/run_train_flickr.sh
 ```
 
-## 🔍 Inference and Evaluation
+### 🔍 Inference
 
-### Compile the C++ trie
+#### 1. Compile the C++ trie
 
-Compiling `trie_cpp` is recommended for faster inference.
+> Compiling `trie_cpp` is recommended for faster inference.
 
 ```bash
 cd src/models/generative_retriever
@@ -196,13 +209,8 @@ c++ -O3 -Wall -shared -std=c++17 -fPIC \
   trie_cpp.cpp -o trie_cpp$(python3-config --extension-suffix)
 ```
 
-DrIG supports three trie implementations during inference:
 
-- `trie_cpp`: fastest C++ implementation
-- `trie`: pure Python implementation
-- `marisa`: alternative trie backend
-
-### Run evaluation
+#### 2. Run evaluation
 
 ```bash
 cd src/eval/configs
@@ -215,11 +223,15 @@ For Flickr30k:
 cd src/eval/configs
 bash run_eval_flickr.sh
 ```
+> DrIG supports three trie implementations during inference:
+`trie_cpp`(fastest),
+`trie`(Python),
+`marisa`(alternative).
 
 ## 📈 Performance
 
-Detailed experimental results are reported in the paper.
-### M-BEIR Average Retrieval Performance
+> We evaluate DrIG under the **global-pool retrieval setting**, where all candidates are merged into a unified retrieval pool. The relative improvement is computed against the corresponding GENIUS-based baseline: DrIG over GENIUS, and DrIG-C / DrIG-LT over GENIUS-C. For detailed experimental results, please refer to the paper.
+
 
 <div align="center">
 
