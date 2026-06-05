@@ -61,7 +61,7 @@ conda env create -f drig_env.yml
 conda activate dig
 ```
 
-The environment uses Python 3.10 and PyTorch 2.5.1. Git LFS is also included for downloading large model and dataset files.
+> The environment uses Python 3.10 and PyTorch 2.5.1. Git LFS is also included for downloading large model and dataset files.
 
 ## 📚 Dataset
 
@@ -76,7 +76,7 @@ git lfs install
 git clone https://huggingface.co/datasets/TIGER-Lab/M-BEIR
 ```
 
-After downloading, update the dataset paths in the corresponding YAML config files and shell scripts before training or evaluation.
+> After downloading, update the dataset paths in the corresponding YAML config files and shell scripts before training or evaluation.
 
 ### MSCOCO and Flickr30k
 
