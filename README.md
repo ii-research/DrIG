@@ -246,7 +246,7 @@ Detailed experimental results are reported in the paper. The tables below summar
 
 <div align="center">
 
-| Setting | CLIP-SF | BLIP-FF | LamRA-ret | LamRA | GENIUS | GENIUS-C | **DrIG** | **DrIG-C** | **DrIG-LT** |
+| Setting | CLIP-SF | BLIP-FF | LamRA-ret | LamRA | GENIUS | GENIUS-C | DrIG (Ours) | DrIG-C (Ours) | DrIG-LT (Ours) |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Local-pool average | 51.3 | 47.9 | 58.1 | 63.7 | 29.5 | 37.6 | **38.0** | **48.7** | **50.4** |
 | Global-pool average | 48.6 | 45.7 | 56.3 | 61.4 | 28.6 | 37.8 | **36.4** | **47.1** | **48.9** |
