@@ -1,9 +1,11 @@
+
+
+## DrIG
+
+This repo provides the source code and checkpoints for our paper **Generative Universal Multimodal Retrieval with Dual-role Identifiers**.
+
 <div align="center">
-
-# DrIG
-
-**Generative Universal Multimodal Retrieval with Dual-role Identifiers**
-
+   
 [![License: MIT](https://img.shields.io/badge/📄%20License-MIT-green)](LICENSE)
 [![Python 3.10](https://img.shields.io/badge/🐍%20Python-3.10-blue)](drig_env.yml)
 [![PyTorch 2.5.1](https://img.shields.io/badge/🔥%20PyTorch-2.5.1-ee4c2c)](drig_env.yml)
@@ -18,29 +20,29 @@ We propose **DrIG**, a novel **G**enerative framework for universal multimodal r
 
 
 ### ✨ Key Advantages
-- **Dual-role identifiers**  
-Assign each candidate a single residual-quantized identifier and reuse it in two complementary roles: a sequential role for autoregressive generation and a set-based role for prefix-independent relevance estimation.
 
-- **Dual-guided constrained decoding**  
-Introduce dual-guided constrained decoding that combines prefix-valid constrained beam search with an order-invariant global relevance prior to mitigate the local-optimum problem of left-to-right identifier generation.
+- **Guided Constrained Decoding**  
+  Uses an order-invariant global relevance prior to guide constrained beam search and alleviate local-optimum errors.
 
-- **Hybrid reranking and practical analysis**  
-Integrate dense top-k reranking and provide ablations and diagnostic analyses on codebook design, beam size, prior weight, reranking depth, decoder backbone, and key training objectives.
+- **Effectiveness–Efficiency Trade-off**  
+Maintains a balance between retrieval effectiveness and inference efficiency under large-scale candidate pools.
+
+- **Universal Multimodal Retrieval**  
+Single model supports diverse retrieval tasks across multiple modalities and domains.
 
 ## 🔎 Overview
 
-DrIG follows a three-stage pipeline:
+DrIG follows a three-stage training  pipeline:
 
-1. **Stage 0: Multimodal feature extraction**
-   Encode queries and candidates into a shared embedding space using the external LamRA-Ret encoder.
+**Stage 0: Multimodal Feature Extraction (LamRA-Ret)**  
+   Encodes queries and candidates into a shared multimodal embedding space. We leverage **LamRA-Ret** for encoder-side multimodal feature extraction, with pretrained checkpoints available on **[Hugging Face](https://huggingface.co/code-kunkun/LamRA-Ret)**.
+   
+**Stage 1: Dual-role Identifier Construction**  
+   Converts candidate embeddings into modality-aware residual-quantized identifiers. Each candidate is assigned a single identifier and reused in two complementary roles: a **sequential role** for autoregressive generation and a **set-based role** for prefix-independent relevance estimation.
 
-2. **Stage 1: Dual-role identifier construction**
-   Convert candidate embeddings into modality-aware residual-quantized identifiers.
 
-3. **Stage 2: Generative retriever training**
-   Train the set-based guidance module and T5 decoder, then retrieve candidates with Trie-constrained beam search and optional dense reranking.
-
-The repository contains code for M-BEIR experiments, MSCOCO/Flickr30k text-to-image retrieval, residual quantization, generator training, and evaluation.
+**Stage 2: Generative Retriever Training**  
+   Trains the set-based guidance module and T5 decoder for identifier generation. During inference, candidates are retrieved through Trie-constrained beam search with an order-invariant global relevance prior and optional dense top-k reranking.
 
 <p align="center">
   <img src="assets/framework.png" alt="Overview of the DrIG framework" width="95%">
@@ -130,7 +132,6 @@ Checkpoint links:
 - **Residual quantization checkpoint**: [`rq_lamra.pt`](https://huggingface.co/KaiPengLi/DrIG/blob/main/checkpoints/rq_lamra.pt)
 - **Generative retriever checkpoints**: [`DrIG_t5small.pt`](https://huggingface.co/KaiPengLi/DrIG/blob/main/checkpoints/DrIG_t5small.pt), [`DrIG_t5base.pt`](https://huggingface.co/KaiPengLi/DrIG/blob/main/checkpoints/DrIG_t5base.pt), [`DrIG_t5large.pt`](https://huggingface.co/KaiPengLi/DrIG/blob/main/checkpoints/DrIG_t5large.pt)
 
-For full inference, use LamRA-Ret, `rq_lamra.pt`, and one generative retriever checkpoint.
 
 ## 🚀 Usage
 
