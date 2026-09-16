@@ -4,11 +4,11 @@ set -euo pipefail
 # =========================
 # Absolute roots (ONLY HERE)
 # =========================
-REPO_ROOT="/home/iiserver31/Workbench/likaipeng/dig"
+REPO_ROOT="/home/"
 SRC="${REPO_ROOT}/src"
 
-MBEIR_ROOT="/data/likaipeng/Flickr30k"
-DIG_ROOT="/data/likaipeng/dig"
+MBEIR_ROOT="/data/Flickr30k"
+DIG_ROOT="/data/dig"
 
 export PYTHONPATH="${SRC}:${PYTHONPATH:-}"
 
