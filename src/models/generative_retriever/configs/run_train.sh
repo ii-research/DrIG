@@ -8,7 +8,7 @@ TRAIN_PY="models/generative_retriever/train.py"
 BASE_YAML="models/generative_retriever/configs/train.yaml"
 BASE_RQ_YAML="models/residual_quantization/configs_scripts/train_rq.yaml"
 
-OUT_ROOT="/../checkpoints/DiG4UMR"
+OUT_ROOT="/../checkpoints/"
 LOG_ROOT="${OUT_ROOT}/logs"
 
 # Absolute roots (ONLY HERE)
