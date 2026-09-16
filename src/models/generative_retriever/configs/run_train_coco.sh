@@ -9,7 +9,7 @@ TRAIN_PY="models/generative_retriever/train.py"
 BASE_YAML="models/generative_retriever/configs/train_coco.yaml"
 BASE_RQ_YAML="models/residual_quantization/configs_scripts/train_rq_coco.yaml"
 
-OUT_ROOT="/data/checkpoints/DiG4UMR"
+OUT_ROOT="/data/checkpoints/"
 LOG_ROOT="${OUT_ROOT}/logs"
 
 # Absolute roots (ONLY HERE)
