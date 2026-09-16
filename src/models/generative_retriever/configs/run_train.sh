@@ -8,12 +8,12 @@ TRAIN_PY="models/generative_retriever/train.py"
 BASE_YAML="models/generative_retriever/configs/train.yaml"
 BASE_RQ_YAML="models/residual_quantization/configs_scripts/train_rq.yaml"
 
-OUT_ROOT="/data/likaipeng/dig/checkpoints/DiG4UMR"
+OUT_ROOT="/../checkpoints/DiG4UMR"
 LOG_ROOT="${OUT_ROOT}/logs"
 
 # Absolute roots (ONLY HERE)
-DATA_ROOT="/data/likaipeng"
-WORK_ROOT="/home/iiserver31/Workbench/likaipeng"
+DATA_ROOT="/data"
+WORK_ROOT="/.."
 
 export PYTHONPATH=.
 export TOKENIZERS_PARALLELISM=false
