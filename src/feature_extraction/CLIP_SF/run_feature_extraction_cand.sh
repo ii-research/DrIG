@@ -1,15 +1,15 @@
 # Feature Extraction CLIP model on MBEIR dataset
 
 # Path to the codebase and config file
-genir_dir="/home/iiserver31/Workbench/likaipeng/dig" # <--- Change this to the GENIUS directory
+genir_dir="/.." # <--- Change this to the directory
 SRC="$genir_dir/src"  # Absolute path to codebse /GENIUS/src # <--- Change this to the path of your GENIUS/src
 
 # Path to common dir
 COMMON_DIR="$SRC/common"
 
 # Path to MBEIR data and GENIUS directory where we store the checkpoints, embeddings, etc.
-MBEIR_DATA_DIR="/data/likaipeng/M-BEIR/" # <--- Change this to the MBEIR data directory you download from HF page
-CKPT_ROOT="/data/likaipeng/dig"   # <--- NEW
+MBEIR_DATA_DIR="/data/M-BEIR/" # <--- Change this to the MBEIR data directory you download from HF page
+CKPT_ROOT="/data/"   # <--- NEW
 
 # Path to config dir
 MODEL="rq"  # <--- Change this to the model you want to run
