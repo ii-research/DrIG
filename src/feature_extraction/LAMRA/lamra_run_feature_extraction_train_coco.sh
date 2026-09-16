@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-genir_dir="/home/iiserver31/Workbench/likaipeng/dig"
+genir_dir="/home"
 SRC="$genir_dir/src"
-MBEIR_DATA_DIR="/data/likaipeng/M-BEIR/"
+MBEIR_DATA_DIR="/data/M-BEIR/"
 
 export PYTHONPATH="$SRC"
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 NPROC=4
 
-MODEL_NAME_OR_PATH="/data/likaipeng/checkpoint/LamRA-Ret/"
+MODEL_NAME_OR_PATH="/data/checkpoint/LamRA-Ret/"
 ORIGINAL_MODEL_ID="$MODEL_NAME_OR_PATH"
 DTYPE="bf16"
 
