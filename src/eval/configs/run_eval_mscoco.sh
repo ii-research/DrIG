@@ -4,11 +4,11 @@ DATASET_NAME="mscoco"
 # =========================
 # Absolute roots (ONLY HERE)
 # =========================
-REPO_ROOT="/home/iiserver31/Workbench/likaipeng/dig"
+REPO_ROOT="/home"
 SRC="${REPO_ROOT}/src"
 
-MBEIR_ROOT="/data/likaipeng/M-BEIR"
-DIG_ROOT="/data/likaipeng/dig"
+MBEIR_ROOT="/data/M-BEIR"
+DIG_ROOT="/data/"
 
 export PYTHONPATH="${SRC}:${PYTHONPATH:-}"
 
