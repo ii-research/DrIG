@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-genir_dir="/home/iiserver31/Workbench/likaipeng/dig"
+genir_dir="/home/"
 SRC="$genir_dir/src"
-mbeir_data_dir="/data/likaipeng/M-BEIR"
+mbeir_data_dir="/data/M-BEIR"
 
 export PYTHONPATH="$SRC"
 export CUDA_VISIBLE_DEVICES=0,1,2,3
