@@ -73,5 +73,5 @@ wandb_config:
   enabled: true
   wandb_project: "DiG4UMR"
   experiment_name: "${model.name} ${model.size} ${experiment.description} rq_${codebook_level_wo_modality}x${codebook_vocab}"
-  wandb_key: "50995eb09ac26de74b2fc2d5ee9e31fe5e7bac48"
+  wandb_key: " "
   notes: "Stage1 invariant pretrain + Stage2 T5 training"
