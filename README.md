@@ -11,6 +11,7 @@ This repo provides the source code and checkpoints for our paper **Generative Un
 [![PyTorch 2.5.1](https://img.shields.io/badge/🔥%20PyTorch-2.5.1-ee4c2c)](drig_env.yml)
 [![Dataset: M-BEIR](https://img.shields.io/badge/🤗%20Dataset-M--BEIR-orange)](https://huggingface.co/datasets/TIGER-Lab/M-BEIR)
 [![Checkpoints: DrIG](https://img.shields.io/badge/🤗%20Checkpoint-DrIG-yellow)](https://huggingface.co/KaiPengLi/DrIG/tree/main/checkpoints)
+[![arXiv](https://img.shields.io/badge/arXiv-2608.12987-b31b1b.svg)](https://arxiv.org/abs/2608.12987)
 
 </div>
 
