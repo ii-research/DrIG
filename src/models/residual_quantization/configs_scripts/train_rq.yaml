@@ -72,4 +72,4 @@ wandb_config:
   wandb_project: "DiG4UMR"
 
   # You want key in YAML (WARNING: do not commit)
-  wandb_key: ""
+  wandb_key: " "
